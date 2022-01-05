@@ -1,0 +1,39 @@
+const http = require("http");
+const port = 4540;
+const ip = 'localhost';
+
+let server = http.createServer((req, res)=>{
+    console.log('Url: ', req.url);
+    console.log('METHOD',req.method);
+    switch(req.url){
+        case '/':
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'text/html');
+            res.end('<p>Aqui é o caminho da barra!</p>');
+            break;
+        case '/olokinho':
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'text/html');
+            res.end('<h1>Aqui é o caminho do olokinho</h1>');
+            break;
+        case '/users':
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({
+                user : {
+                    name: 'Guilherme Eduardo Bublitz',
+                    email: 'gui.e.bublitz@gmail.com',
+                    id: 1 
+                }
+            }));
+            break;
+        case '/semJSON':
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+        default : res.statusCode = 404;
+    }   
+});
+
+server.listen(port, ip, ()=>{
+    console.log('O servidor está rodando!');
+});
