@@ -21,7 +21,7 @@ const ip = 'localhost';
 // app.use('/olokinho', routesOlokinho);
 
 //substituimos tudo que o código comentado acima fazia apenas usando o consign
-consign().include('routes').into(app);
+consign().include('routes').include('utils').into(app);
 
 //Rodando server
 app.listen(port, ip, ()=>{
