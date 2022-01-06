@@ -14,6 +14,10 @@ module.exports = (app)=>{
             }]
         });
     });
+    app.post('/users',(req, res)=>{
+        res.json(req.body);
+    });
+   
     
     app.get('/users/admin',(req, res)=>{
         res.statusCode = 200;
@@ -21,5 +25,8 @@ module.exports = (app)=>{
         res.json({
             user : []
         });
-    });        
+    }); 
+    app.post('/users/admin',(req, res)=>{
+        res.json(req.body);
+    });     
 };
